@@ -1,0 +1,421 @@
+Zoomcharts javascript library.
+
+Copyright 2014-2015, Data Visualization Tools Lab. All rights reserved.
+http://zoomcharts.com
+
+Version 1.11.4
+
+====== Changelog ===========================
+
+--------------------------------------------
+Version 1.11.4
+ * Worked around a bug in Windows Phone IE when using display scaling (custom DPI).
+ * Fixed additional IE9 compatibility issue.
+
+ NetChart
+ * Default `focusNodeTailExpansionRadius` set to `null` which instructs the chart to use the same
+   value as specified in `focusNodeExpansionRadius`.
+ * Focus node layout will more correctly respond to dynamically changing settings.
+
+ TimeChart
+ * Improved chart behavior when working with completely empty dataset.
+
+--------------------------------------------
+Version 1.11.3
+ * Improved IE9 support by correctly wrapping all `console` calls.
+ * Fixed some invalid comments in the documentation on anonymous types.
+ * Fixed issue on IE where the charts prevented clicks on browser scrollbar.
+
+ GeoChart
+ * Fixed bugs with positioning locked nodes with dynamic layout.
+ * No longer using `worldCopyJump` option for Leaflet map, instead the default `navigation.maxBounds`
+   value has been updated to not allow horizontal scroll outside the chart area.
+ * Updated the bundled Leaflet.js to version 0.7.7.
+ * Nodes that are loaded from GeoJSON now have `data.shapeFeature` and `data.shapeGeometry` 
+   properties that contain the original data objects.
+
+--------------------------------------------
+Version 1.11.1
+ * Reduced default values of `area.minHeight` and `area.minWidth` from 165px to 50px.
+ * Improved info popup and context menu positioning when using chart-on-chart.
+
+ TimeChart and FacetChart
+ * Bugfixes for value labels.
+
+--------------------------------------------
+Version 1.11.0
+ * The version history in the documentation will be added from now on to new and updated settings 
+   and API members.
+ * Documentation updates and small bugfixes.
+
+ TimeChart and FacetChart
+ * Value labels can now be added to the chart (e.g. showing the actual value on top of each column).
+ * Series configuration can now be extended with additional data using `extra` property. This data
+   can then be used in the event handlers.
+ * New setting `info.position`. Can be specified as `outside` to allow info popup to be rendered
+   above or below the chart. Useful for when the chart is very small.
+
+ NetChart
+ * Fixed node menu when three-finger click was used on Chrome/OSX.
+
+--------------------------------------------
+Version 1.10.0
+ * All charts now have `replaceSettings()` method that can be used to remove settings that are
+   arrays or dictionaries (such as TimeChart series and value axis).
+ * Dragging the pointer around and releasing at the initial location no longer triggers a click.
+ * Labels can now contain multiple sequential `<br>` tags.
+ * Better mouse wheel handling, most notably for Firefox where it did not work in certain situations.
+
+ GeoChart
+ * Leaflet.js is no longer embedded in zoomcharts.js. Instead it is loaded asynchronously when
+   the chart is first created. Note that GeoChart.leaflet() API method can now return `null` 
+   while the async load is in progress.
+ * Updated the bundled Leaflet.js to version 0.7.5.
+
+ FacetChart
+ * `facetAxis.maxUnitWidth` setting now behaves as expected.
+
+ TimeChart
+ * `localization.calendar.week.dow` can now be used to specify the first day of the week (default is
+   Monday).
+ * All week format strings have been changed to correctly use ISO week number and year.
+
+ NetChart
+ * `onHoverChange` event is now called less frequently when hovering link labels.
+ * If the selection is changed while a node is being dragged, the chart now behaves correctly.
+ * Navigation modes overhauled for a more intuitive behavior, especially for "focusnodes".
+ * New setting default value: focusNodeTailExpansionRadius changed from 0.3 to 2.
+ * New setting default value: focusAutoFadeout changed from true to false.
+ * New setting: autoUnfocus. Governs what happens when a user wants to focus more than "numberOfFocusNodes".
+ * Fixed setting focusAutoFadeout - now actually works.
+
+--------------------------------------------
+Version 1.9.1
+ TimeChart
+ * Fixes use of `seriesDefault`.
+
+ FacetChart
+ * Fixes use of `seriesDefault`.
+ * Added `toolbar.logScale` setting to allow easy removal of Lin/Log button from the toolbar.
+
+ PieChart
+ * Fixed mouse/touch interactions in fullscreen mode.
+
+--------------------------------------------
+Version 1.9.0
+ * Improvements how mouse and touch is handled when the pointers are moved outside the chart area.
+ * Most gradients are now calculated using LAB color scheme which results in better colors.
+ * Improvements to documentation.
+ * Event handlers now are passed two arguments - the mouse event and the event arguments.
+
+ Time chart
+ * Vertical time markers (milestones) can now be added to the chart.
+ * Fixed issues when milliseconds were used as the display unit.
+
+ Net chart
+ * Rectangle shape for nodes is now built in without the need to provide custom delegates.
+ * Fixed displaying links in legend.
+ * Zoom slider control can now be hidden by setting `toolbar.zoomControl=false`.
+ * `onHoverChange` event is now called less frequently when hovering node labels.
+ * The `contentsFunction` for `nodeMenu` and `linkMenu` can now return DOM element, not just string.
+ 
+--------------------------------------------
+Version 1.8.4
+ * Fixed issue when using HTML tags within label texts could hang the script execution.
+
+--------------------------------------------
+Version 1.8.3
+ * Fixed number formatting where zeroes could be omitted.
+
+--------------------------------------------
+Version 1.8.2
+ * Added support for OEM licenses.
+
+--------------------------------------------
+Version 1.8.1
+ Pie chart
+ * `selection()` method modified enabling user code to modify the returned array.
+
+--------------------------------------------
+Version 1.8.0
+ * Performance improvements.
+ * Many improvements to the documentation.
+ * All charts now include default visual dark themes (on black background).
+ * The objects on charts (such as nodes or slices) can be used as drag-n-drop targets.
+ * Long press is no longer cancelled as soon as the pointer moves.
+ * Better support for zoom/scroll/pan on mobile devices (specifically on Android/Chrome).
+
+ Breaking changes
+ * PieChart - specifying `slice.styleFunction` no longer prevents default slice label from being
+   generated - instead it can be set to `null` manually within the `slice.styleFunction`.
+
+ Geo chart
+ * Fixed positioning issue when using `title` on geo chart.
+ * API method `updateStyle` can now be passed the IDs of objects to achieve better performance.
+
+ Time chart
+ * `info.advanced.contentsFunction` is now passed the time range and can override the header.
+ * Fixed `nameLegend` setting not working. Show 'Unnamed' by default for series without names.
+ * Data object is now cloned in certain situations to allow it to be reused (for example, in
+   multiple charts) even if timezone offsets or type conversion modifies the data.
+ * Chart is automatically redrawn when new data is added to it using API.
+ * The current time marker is no longer included in the scrollable region by default.
+ * Even/odd color styling made more consistent when multiple stacks are used.
+ * Display errors if invalid time units are used.
+ * Fixed minorTimeBalloon rendering.
+ * Added `count` aggregation method.
+ * Fixed logarithmic scale when using stacked series.
+
+ Facet chart
+ * Fixed `nameLegend` setting not working. Show 'Unnamed' by default for series without names.
+ * Scroll buttons have larger responsive area on touch devices.
+ * Multi-line and rotated labels are now rendered with ellipsis when needed.
+
+ Pie chart
+ * Specifying `slice.styleFunction` no longer prevents default slice label from being
+   generated - instead it can be set to `null` manually within the `slice.styleFunction`.
+ * `slice.labelStyle` moved to `slice.style.label` and `slice.insideLabelStyle` to 
+   `slice.style.insideLabel`. Streamlined the label style application.
+ * `slice.label` now contains the whole label style instead of just the text - to set the text
+   use `slice.label.text`.
+ * Icons that are slow to download are now displayed as soon as they are available.
+
+ Net chart
+ * Hovering on node/link label or custom item now is treated as hover on the node/link.
+ * Clicking node or link label or custom item now raises `onClick` event and populates the 
+   `clickItem` property.
+ * More consistent behavior on which nodes are hidden when focus node navigation is used.
+ * Automatic scaling based on zoom can now be specified for links and nodes separately.
+ * Added `invisible` setting to links and nodes that enable performant way of hiding them.
+ * API method `updateStyle` can now be passed the IDs of objects to achieve better performance.
+ * Improvements to the hierarchy layout.
+
+--------------------------------------------
+Version 1.7.1
+ Time chart:
+ * Fixed "Latest/day/week/month" and "All data" dropdown.
+
+ Net chart:
+ * Rotation with touch is now smoother.
+
+--------------------------------------------
+Version 1.7.0
+ * CSS resources are now bundled in one file and minimized to reduce file size.
+
+ Pie chart:
+ * Ability to select slices by pulling them outwards gradually (API provides information on how
+   far each slice was pulled).
+
+ Net chart:
+ * Dynamic layout can now be rotated on touch devices.
+ 
+ Time chart:
+ * Averages are now calculated correctly over multiple units (for example, if the data is for
+   hours, display unit is month but the info popup aggregates by years).
+ * Improvements how onChartUpdate and onAnimationDone are called while data is still loading.
+ * Fixed line series rendering when noDataPolicy=skip was used.
+ * Fixed some issues when zooming in would crop the selected time range.
+
+--------------------------------------------
+Version 1.6.0
+ * Library now requires license key to be defined when included.
+ * All charts verify the settings given to them and display warnings on unknown values.
+ * Charts display warnings when deprecated settings are being used.
+ * Updated bundled Leaflet.js to 0.7.3
+
+ Breaking changes:
+ * Facet chart no longer supports `series[].styleFunction` - use `items.styleFunction` instead.
+
+ Geo chart:
+ * Aggregated nodes now automatically shows the area from which the nodes are being aggregated.
+
+ Pie chart:
+ * Chart can be rotated by mouse or touch - rotation shows additional slices from Others/Previous.
+ * Fixed label layout in some situations (narrow viewport, large paddings or font sizes etc.)
+
+ Net chart:
+ * New API method scrollIntoView() that can be used to automatically pan/zoom to certain node(-s).
+ * Fixed manual layout mode on radial/hierarchial layout and restoring the original layout.
+
+ Time chart:
+ * Ability to draw threshold lines or areas based on value axis values.
+ * Time scrolling (left/right) is now implemented using kinetic algorithm making it much smoother.
+ * Multiple value axis no longer render separate grid lines that cannot be distinguished.
+
+ Facet chart:
+ * Long labels are now rendered using text ellipsis (...) instead of clipping.
+ * Breaking: No longer supports `series[].styleFunction` - use `items.styleFunction` instead.
+
+--------------------------------------------
+Version 1.5.1
+ * TimeChart - preloaded data will now automatically imply data limits that prevent overscroll.
+
+--------------------------------------------
+Version 1.5.0
+ * TypeScript definition file for chart API
+   * Provides compile time check of API and settings schemas if TypeScript is used.
+   * Can be used to get auto-complete functionality for JavaScript in IDEs that support it 
+	 (such as WebStorm or Visual Studio Code)
+ * ability to render multiple charts on the same canvas
+
+ Breaking changes:
+ * `dataFunction` can no longer directly return value, instead `success` delegate must be always used 
+
+ Deprecated functions:
+ * TimeChart - `serverTime` is deprecated in favor of `timeZoneOffset`.
+
+ Geo chart:
+ * first public release - note that the API is stable but subject to change
+ * completely new geographical chart
+ * uses Leaflet with the ability to use any map engine supported by Leaflet such as
+   OpenStreetMap, Google Maps, Bing Maps, ESRI WMS services.
+ * native Net chart integration (nodes and links with geographic coordinates)
+ * supports custom shapes (such as countries/regions) with automatic drilldown
+ * supports auto-aggregation of nodes
+ * supports integration with other chart types (Pie/Time/Facet) with the Net chart on Geo chart.
+ * smart dynamic/floating node layout with fixed anchor points
+
+ Net chart:
+ * hierarchial layout mode added.
+ * improved animation algorithms.
+ * support custom shapes for nodes (user specified rendering methods).
+ * additional built-in node shape - droplet.
+
+ Pie chart: 
+ * ability to swipe in order to select slices.
+
+ Time chart:
+ * Candlestick series type.
+ * ability to specify the timezone offset separately for data and series.
+
+ Facet chart:
+ * chart displays buttons indicating that additional data is available by swiping.
+
+--------------------------------------------
+Version 1.4.1
+ Netchart:
+ * fixed labels not rendering correctly when using relative text size (em or %).
+ * fixed node and link radius not being updated on hover and select actions.
+ * nodes and links now have usable .selected property to detect if they are selected.
+
+--------------------------------------------
+Version 1.4.0
+
+ Net chart:
+ * radial layout mode added. Use settings.layout.type = "radial".
+ * improved performance by using label cache.
+ * layout improved by avoiding node label overlaps.
+ * labels now scale with zoom by default. To restore the old behavior set
+      -settings.style.nodeLabel.scaleWithSize: false
+      -settings.style.linkLabel.scaleWithZoom: false
+ * many stability and compatibility fixes.
+
+--------------------------------------------
+Version 1.3.0
+ * legend introduced for all charts
+ * chart resizer bar now has option to lock chart aspect ratio
+ * long press now acts as right click on all platforms
+ * new chart.clearHistory - clears back history
+ * IE8 compatible rendering code, using ExplorerCanvas(trunk)
+ * many bug fixes.
+
+ Time chart and Facet chart:
+ * value axis introduced valueAxis.valueFormatterFunction for custom label formatting
+
+ Net chart:
+ * added object classes for easier styling
+ * loading symbol no longer loops forever on node image load error
+
+ Pie chart:
+ * label style is now per-slice configurable using slice.labelStyle and slice.insideLabelStyle
+
+
+--------------------------------------------
+Version 1.2.4.1
+ Time chart:
+ * added options to limit scroll area using interaction.scrolling.limitFrom and limitTo.
+
+--------------------------------------------
+Version 1.2.4
+ * added dashed lines support for every chart
+ * new toolbar for all charts, includes option to add user defined buttons.
+
+ Time chart:
+ * click events now have clickSeries associated with it
+ * reworked noDataPolicy rendering for line series.
+
+--------------------------------------------
+Version 1.2.3.1
+ * fixed assets_applyMethod not being respected in initial settings.
+
+--------------------------------------------
+Version 1.2.3
+ * no pixelization on zoom in via automatic canvas scaling (desktop based browsers)
+ * added HTML entity and <br> support in label text
+ * fixed pointer position issues when position=fixed is used
+ * fixed Safari crashes in iOS.
+
+ Net chart:
+ * fixed multi-link selection issues
+ * added label and item scaling with zoom, using item.scaleWithZoom property.
+ * link direction can now be controlled using link.direction attribute.
+
+ Time chart:
+ * added onHoverChange event
+ * hovered series is now detected, available via event.hoverSeries.
+
+--------------------------------------------
+Version 1.2.2
+  Net chart:
+  * added cursor property on nodes and links
+  * better layout auto-stop on some networks.
+
+--------------------------------------------
+Version 1.2.1
+  * added support for touch on Internet Exporer 10 and 11
+  * added margin and borderRadius for labels and items.
+
+  Pie chart:
+  * added slice.minFraction setting to make very small slices bigger.
+
+  Time chart:
+  * fixed time axis rendering fix when display unit is 5 seconds
+  * more precise control over time unit sizes using settings.timeAxis.unitSizePolicy.
+
+
+--------------------------------------------
+Version 1.2.0
+  * charts now automatically follow the size of their container, eliminating the need to call updateSize.
+
+  Pie chart:
+  * labels can now have an optional balloon outline
+  * added event.hoverLabel.
+
+  Net chart:
+  * has new and improved auto zoom. The default zoom is now set to 1:1
+    To restore old behavior use the following settings:
+    - interaction.zooming.autoZoomExtent: [0.1, 8] and
+    - style.nodeRadiusExtent: [10,50].
+  * Node.dataLinks now contains unfiltered links.
+    Filtered links now available at node.dataLinksFiltered (was node.dataLinks before).
+  * added chart.updateStyle() function to re-evaluate style after style function behavior changes
+  * added per node display mode using node.display field
+  * added node.opacity style parameter
+  * added node.imageCropping style option
+  * fixed image cropping filter for images with transparent background
+  * toolbar can now be disabled.
+
+  Facet chart and Time chart:
+  * value axis can now have fixed minValue, maxValue and scaleStep
+  * detect the clicked series, available via event.clickSeries and hoverSeries field.
+
+  Facet chart:
+  * reworked mouse/touch interaction.
+
+  Time chart:
+  * Time axis now highlight holidays
+  * Series now support showInLegend = true, data.valueFunction and data.aggregatedValueFunction.
+
+--------------------------------------------
+Version 1.0
+* Initial public release.
