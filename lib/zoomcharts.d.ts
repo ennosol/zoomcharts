@@ -2485,15 +2485,20 @@ declare module ZoomCharts.Configuration {
     /** Describes the base properties shared between all events raised by the different charts. */
     export interface PieChartChartClickEventArguments extends PieChartChartEventArguments {
         clickPie: PieChartPie;
+        /** Contains the slice that was clicked. Note that this will also be populated when the label
+        of the slice is clicked. */
         clickSlice: PieChartSlice;
     }
     /** Describes the base properties shared between all events raised by the different charts. */
     export interface PieChartChartEventArguments extends BaseChartEventArguments {
         count: number;
+        /** Contains the label object if one is currently hovered, `null` otherwise. */
         label: BaseLabel;
         offset: number;
         pie: PieChartPie;
         selection: Array<PieChartSlice>;
+        /** Contains the currently hovered slice. Note that this will also be populated when the label
+        of the slice is clicked. */
         slice: PieChartSlice;
     }
     export interface PieChartDataObject extends PieChartDataObjectCommon {

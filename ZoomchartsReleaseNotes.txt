@@ -3,9 +3,19 @@ Zoomcharts javascript library.
 Copyright 2014-2015, Data Visualization Tools Lab. All rights reserved.
 http://zoomcharts.com
 
-Version 1.11.4
+Version 1.11.5
 
 ====== Changelog ===========================
+
+--------------------------------------------
+Version 1.11.5
+ * Unrecognized colors in settings now print a warning in the browser color.
+ * License check is no longer executed multiple times on the same page for the same chart type.
+ * Fixed single-taps sometimes being treated as double-taps on touch devices.
+ * Fixed unable to click scrollbar on IE9.
+
+ NetChart
+ * Fixed focus nodes navigation when `numberOfFocusNodes=1`.
 
 --------------------------------------------
 Version 1.11.4
