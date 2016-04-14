@@ -3,9 +3,39 @@ Zoomcharts javascript library.
 Copyright 2014-2015, Data Visualization Tools Lab. All rights reserved.
 http://zoomcharts.com
 
-Version 1.11.5
+Version 1.11.7
 
 ====== Changelog ===========================
+
+--------------------------------------------
+Version 1.11.7
+ * The hidden element 'Mg9!' (used for font height detection) can now be styled.
+
+ NetChart
+ * Fixed selection events to trigger properly when used with SHIFT+click.
+
+--------------------------------------------
+Version 1.11.6
+ * `toolbar.cssClass` setting now works as expected.
+ * Switched to `Array.isArray` to support arrays created in different frames.
+
+ GeoChart
+ * `onChartUpdate` event is now raised after the map moves around without user interaction.
+ * Improved performance for dragging the map when many nodes are rendered on the chart.
+
+ FacetChart
+ * Fixed value axis rendering when chart title is used.
+ * `sortField` now handles `null` and `undefined` as zero values.
+ * No longer throws an error if `name` in data is not a string.
+
+ TimeChart
+ * Fixed value axis rendering when chart title is used.
+
+ PieChart
+ * Fixed some edge cases when label connector was drawn incorrectly.
+ * `sortField` now handles `null` and `undefined` as zero values.
+ * Slice animations are now much more fluent when data is dynamically modified.
+ * Fixed inside labels appearing when the slice was hovered even though they did not fit.
 
 --------------------------------------------
 Version 1.11.5

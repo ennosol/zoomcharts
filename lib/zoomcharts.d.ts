@@ -660,7 +660,7 @@ declare module ZoomCharts.Configuration {
         text?: string;
     }
     export interface BaseSettingsToolbar {
-        /** Toolbar align. Note that it can be overridden for individual items using item.align. Also Use 'top' or 'bottom' 
+        /** Toolbar align. Note that it can be overridden for individual items using item.align. Also Use 'top' or 'bottom'
         sides in conjunction with 'left', 'right' align or use 'left', 'right' sides with 'top', 'bottom'. */
         align?: string;
         /** Whether to show back button in toolbar. */
