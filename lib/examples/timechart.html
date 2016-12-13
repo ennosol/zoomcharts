@@ -1,5 +1,5 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<!DOCTYPE html>
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="assets/css/reset.css" type="text/css" />
@@ -16,29 +16,28 @@
     <h1>TimeChart integration example</h1>
     To integrate TimeChart into your web application, follow these steps:<br />
     <ol>
-        <li>Copy "lib" folder into your web application root folder (e.g. where your index.html is)</li>
-        <li>Add following code snippet in your html file<pre>&lt;script src="lib/<?libname?>.js"&gt;&lt;/script&gt;</pre></li>
-        <li>Alternatively you can include the script from the CDN<pre>&lt;script src="//cdn.zoomcharts.com/1/latest/zoomcharts.js"&gt;&lt;/script&gt;</pre></li>
-        <li>Add container element in which the chart will be added <pre>&lt;div id="demo"&gt;&lt;/div&gt;</pre></li>
+        <li>Extract the library under your web application root folder (e.g. where your index.html is)</li>
+        <li>Add following code snippet in your html file<pre>&lt;script src="zoomcharts/zoomcharts.js"&gt;&lt;/script&gt;</pre> (where <code>zoomcharts</code> is the name of the folder where you extracted the library)</li>
+        <li>Alternatively you can include the script from the CDN<pre>&lt;script src="//cdn.zoomcharts-cloud.com/1/latest/zoomcharts.js"&gt;&lt;/script&gt;</pre></li>
+        <li>Add container element in which the chart will be added <pre>&lt;div id="chart"&gt;&lt;/div&gt;</pre></li>
         <li>
             Initialize chart:
 <pre>
     &lt;script&gt;
         var t = new TimeChart({
-            container: document.getElementById("demo"),
+            container: document.getElementById("chart"),
             area: { height: 350 },
             data: {
                 preloaded: {
                     values: [
-                        [0, 100],
-                        [1000, 200],
-                        [2000, 300],
-                        [3000, 400],
-                        [4000, 500]
+                        ["2015-01-10", 100],
+                        ["2015-01-11", 200],
+                        ["2015-01-12", 300],
+                        ["2015-01-13", 400],
+                        ["2015-01-13", 500]
                     ],
-                    unit: 's'
-                },
-                timestampInSeconds: true
+                    unit: 'd'
+                }
             }
         });
     &lt;/script&gt;
@@ -48,7 +47,7 @@
         <li>Congratulations. You have now successfully integrated ZoomCharts into your web application if you can see the same chart as below in the live demo.</li>
     </ol>
     <h2>Live Demo</h2>
-    <script src="lib/<?libname?>.js"></script>
+    <script src="../zoomcharts.js"></script>
     <noscript><strong>JavaScript is currently disabled in your browser. Make sure you allowed the scripting after opening this page.</strong></noscript>
     <div id="demo"></div>
     <script>
@@ -58,23 +57,22 @@
             data: {
                 preloaded: {
                     values: [
-                        [0, 100],
-                        [1000, 200],
-                        [2000, 300],
-                        [3000, 400],
-                        [4000, 500]
+                        ["2015-01-10", 100],
+                        ["2015-01-11", 200],
+                        ["2015-01-12", 300],
+                        ["2015-01-13", 400],
+                        ["2015-01-13", 500]
                     ],
-                    unit: 's'
-                },
-                timestampInSeconds: true
+                    unit: 'd'
+                }
             }
         });
     </script>
     <a href="http://jsfiddle.net/o3vmxbdt/" target="_blank" class="jsfiddle">Try it on jsFiddle</a>
     <h2>More Information:</h2>
     <nav>
-        <a href="https://zoomcharts.com/developers/en/net-chart/overview/">Read full Documentation</a>
-        <a href="https://zoomcharts.com/developers/en/net-chart/examples/">Browse more examples</a>
+        <a href="https://zoomcharts.com/developers/en/time-chart/api-reference/settings.html">Read full Documentation</a>
+        <a href="https://zoomcharts.com/developers/en/time-chart/examples/data-sources/preloaded.html">Browse more examples</a>
     </nav>
 </body>
 </html>

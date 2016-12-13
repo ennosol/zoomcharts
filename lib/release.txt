@@ -3,15 +3,228 @@ ZoomCharts javascript library.
 Copyright 2014-2016, Data Visualization Tools Lab. All rights reserved.
 http://zoomcharts.com
 
-Version 1.13.3
+Version 1.15.8
 
 ====== Changelog ===========================
 
+Version 1.15.8 (2016-10-12)
+
+NetChart:
+ * Fixed issue in hierarhcy layout that moved nodes too far away.
+
+PieChart
+ * Fixed long labels not being positioned correctly on initial load.
+
+--------------------------------------------
+Version 1.15.7 (2016-09-22)
+NetChart/GeoChart: 
+ * Fixed custom node/link item x/y coordinates not being properly used.
+
+TimeChart/FacetChart:
+ * Value axis default size calculation now works with `valueFormatterFunction`.
+
+--------------------------------------------
+Version 1.15.6 (2016-08-31)
+ * Fixed some images disappearing on Safari+MacOS.
+ * Fixed drawing of labels with thick borders.
+ * Toolbar dropdowns are now positioned in the current viewport so that they do not require scrolling.
+ * Added new setting `toolbar.exportOptions` that enable disabling some export options.
+ * `advanced.exportProxyURL` can now be set to `null` to disable the proxy completely.
+
+ FacetChart
+ * Fixed handling of disabled value axis.
+ * Improved handling of different font styles in value labels.
+ * Improved value labels on stack type `based`.
+ * Fixed `data.sortField` callback being called too often during animations.
+
+ TimeChart
+ * Improved error message if the data object values is not an array of arrays.
+ * Improved handling of different font styles in value labels.
+ * Improved value labels on stack type `based`.
+ * Fixed using unit multiples in data source together with timezone other than UTC.
+
+--------------------------------------------
+Version 1.15.5 (2016-08-17)
+ * Added support for the "ZCB" license type.
+
+--------------------------------------------
+Version 1.15.4 (2016-08-15)
+ * Fixed `zoomcharts.d.ts` definition file so that it no longer requires `moment.d.ts`.
+ * Increased compatibility with older `moment.js` versions.
+ * Fixed info popup incorrectly displaying certain values.
+
+PieChart
+ * Fixed browser freezing in some situations when the data is removed from the chart.
+
+--------------------------------------------
+Version 1.15.3 (2016-07-15)
+ TimeChart
+ * Fixed TimeChart not aggregating months into years when the data source only contains data by months.
+
+ FacetChart
+ * Fixed facet axis title sometimes not appearing in the exported images.
+
+ NetChart
+ * Auras can now be disabled properly using `updateSettings()`.
+
+--------------------------------------------
+Version 1.15.2 (2016-07-12)
+ GeoChart
+ * Switched the default tile server to CartoDB as MapQuest discontinued its service.
+
+--------------------------------------------
+Version 1.15.1 (2016-07-11)
+ * Fixed image downscale algorithm sometimes crashing the browser.
+
+--------------------------------------------
+Version 1.15.0 (2016-07-11)
+ * Back and Zoom-out buttons are now disabled if their action cannot be performed (except for zoom-out on TimeChart).
+ * Refactored the label rendering code to reduce chance for incorrect results in some edge cases.
+
+ TimeChart
+ * Added support for multiples of units (e.g. `5 m`) for the data sources.
+ * Added `targetDisplayUnit()` API method.
+ * Added `data.useSmallerUnitCache` setting.
+ * Added `interaction.zooming.click` setting.
+ * Fixed issue where the currently hovered series was incorrectly reported if separateNegativeValues was used.
+ * `data.minimizeRequests` setting is now used during animations as well and not only during user interaction.
+ * Added `nameLegend` and `legendGroupId` to series configuration.
+ * Calling `time()` or `displayUnit()` with `animte: true` will now interrupt the current user drag interaction.
+ * Most API methods now accept `Date` or moment instances as well as numeric timestamps.
+
+ NetChart
+ * Added the ability to draw auras (grouping clusters) to visually group nodes.
+ * Images on nodes are now resized using higher quality algorithm.
+ * Multiple links between the same nodes are now always sorted by their ID values.
+ * "invisible" setting on nodes/links now works properly.
+ * Fixed issue where removing a node would not remove links to it.
+ * Improved error reporting and handling for invalid data.
+ * Changed behavior if data function/url returns requested nodes, but none have `.loaded=true`. This will now be an 
+   error and data will be discarded.
+ * Removed unused "value" field from NetChart/GeoChart nodes and links.
+ * Added "Close" button to NetChart node menu, which hides surrounding nodes if they don't have any further links.
+ * Legend can now be used to show/hide nodes and links with the matching classes.
+ * Added `nameLegend`, `showInLegend` and `legendGroupId` to link and node class configuration.
+
+ FacetChart
+ * Added support to export as CSV or XLSX.
+ * Added `facetAxis.labels.allowOverflow` setting.
+ * Added `nameLegend` and `legendGroupId` to series configuration.
+
+ PieChart
+ * Added support to export as CSV or XLSX.
+ * Images on slices are now resized using higher quality algorithm.
+
+ GeoChart
+ * `background` settings can now be changed via `updateSettings()`.
+
+--------------------------------------------
+Version 1.14.9 (2016-08-17)
+ * Added support for the "ZCB" license type.
+
+--------------------------------------------
+Version 1.14.8 (2016-08-15)
+ * Fixed info popup incorrectly displaying certain values.
+
+--------------------------------------------
+Version 1.14.7 (2016-07-12)
+ GeoChart
+ * Switched the default tile server to CartoDB as MapQuest discontinued its service.
+
+--------------------------------------------
+Version 1.14.6 (2016-07-07)
+ PieChart
+ * Additional fix for `interaction.others.minSlices`.
+
+ NetChart
+ * Expanded nodes are no longer collapsed on click when using `manual` navigation mode.
+
+ FacetChart
+ * Toggling series using legend now raises `onChartUpdate` event.
+
+ TimeChart
+ * Toggling series using legend now raises `onChartUpdate` event.
+ * Clicking the selection clears it before drill down; clicking the edges does nothing.
+
+--------------------------------------------
+Version 1.14.5 (2016-07-04)
+ * Improved CSS asset loading from remote servers.
+
+ PieChart
+ * Fixed `interaction.others.minSlices` setting hiding both the smaller slices and the Others slice.
+
+ FacetChart
+ * Fixed case when in some scenarios negative values would not work properly.
+
+ GeoChart
+ * Avoid HTTP request for the MapQuest copyright icon.
+
+--------------------------------------------
+Version 1.14.4 (2016-06-22)
+ * Improved compatibility for older browsers, for example, Android 4.1 and 4.2.
+
+ TimeChart
+ * Updated bundled moment-tz.js to 0.5.4-2016d.
+ * Fixed `based` stacks where series with larger values are followed by smaller values.
+
+ FacetChart
+ * Fixed `based` stacks where series with larger values are followed by smaller values.
+
+--------------------------------------------
+Version 1.14.3 (2016-06-14)
+ * Fixed memory leak when multiple charts reused the same DOM container element.
+
+ NetChart
+ * Improved preloaded data error handling during chart initialization.
+
+--------------------------------------------
+Version 1.14.2 (2016-06-09)
+ * Fixed memory leak in license verification process.
+
+--------------------------------------------
+Version 1.14.1 (2016-05-30)
+ * Fixed touch tap handling when using chart-on-chart with piecharts.
+
+--------------------------------------------
+Version 1.14.0 (2016-05-22)
+ * Prevents text selection on Safari when the pointer is pressed and moved outside the chart.
+ * Added `legend.interaction.click` setting.
+
+ TimeChart
+ * Improved zooming gestures when the initial display unit is very narrow or very wide.
+ * Improved mouse wheel support for zooming the chart.
+ * Added `targetTime()` method that returns the target time during animations.
+ * `displayUnit()` method now accepts "auto" that determines the correct unit based on settings.
+ * Added `interaction.selection.moveByDragging` setting.
+ * All existing settings in `localization.calendar` have been deprecated, instead the default moment 
+   locale files can now be used by specifying `localization.calendar.parentLocale`.
+ * Updated bundled moment.js to 2.13.0 and moment-tz.js to 0.5.3-2016c.
+ * Multiple charts on the same page can now use different time formatting settings.
+ * Fixed issue when the existing `moment` instance was not used and was overwritten with the bundled one.
+ * Fixed issue when the chart could request the same data interval infinitely.
+ * Fixed issue with hovered series being incorrectly reported in events/contentsFunction when candlesticks
+   are in use.
+
+ FacetChart
+ * Improved mouse wheel support for zooming the chart.
+ * `data.sortField` can now be specified as a callback function.
+ * Added `filters.allowZeroValues` setting (default `true`).
+
+ PieChart
+ * Added `legend.showOthers` setting (default `false`).
+ * `data.sortField` can now be specified as a callback function.
+ * Added `filters.allowZeroValues` setting (default `false`).
+
+ NetChart
+ * Added `rotation` setting for hierarhcy layout (default 0).
+ 
+--------------------------------------------
 Version 1.13.3 (2016-04-18)
  TimeChart
  * Fixed regression introduced in 1.13.2 when the chart selects the smallest available unit when
    drilldown is performed by clicking on the chart.
 
+--------------------------------------------
 Version 1.13.2 (2016-04-14)
  * Chart title is positioned relative to the full width also when legend or other side panels are used.
  * Fixed toolbar positioning if the container was initially invisible.
@@ -73,7 +286,7 @@ Version 1.13.0 (2016-03-20)
  * Legend is now more likely to show when there is limited space available.
 
  NetChart
- * No longer fail for nodes without ID, instead automatic ID is assigned and an warning is shown.
+ * No longer fail for nodes without ID, instead automatic ID is assigned and a warning is shown.
  * Restored the default behavior of `autoZoomExtent` of 1.11 so that even very large networks are 
    fully shown by default.
 
